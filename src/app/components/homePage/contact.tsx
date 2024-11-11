@@ -10,12 +10,12 @@ const Contact = () => {
 
             <div className=" w-full md:px-20 xl:px-20">
                 <div className="bg-blue-ribbon-50 p-2 md:p-4 flex flex-row align-middle justify-between hover:bg-blue-ribbon-100">
-                    <a href="mailto: alfinteguh94@gmail.com" className="flex flex-row items-center">
+                    <a href="mailto: mytimsea@gmail.com" className="flex flex-row items-center">
                         <PiEnvelopeBold className="text-blue-ribbon-600 text-xl" />
                         <h1 className="ml-2">Email</h1>
                     </a>
                     <span className="flex flex-row">
-                        <p className="text-blue-ribbon-600 px-2">@mytimsea</p>
+                        <p className="text-blue-ribbon-600 px-2">mytimsea@gmail.com</p>
                         <PiArrowRightBold className="my-auto text-blue-ribbon-600"/>
                     </span>
                 </div>
