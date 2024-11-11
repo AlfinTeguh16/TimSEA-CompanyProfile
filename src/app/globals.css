@@ -7,15 +7,31 @@
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
 }
+/* background: var(--background); */
 
 body {
   color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.responsive-container {
+  background-image: url('/images/SEA-map.svg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+
+@media (min-width: 768px) { /* untuk tablet dan desktop */
+  .responsive-container {
+    background-image: url('/images/SEA-map.svg');
+    background-repeat: no-repeat;
+    background-size: 55%;
+    background-position: center;
+  }
 }
