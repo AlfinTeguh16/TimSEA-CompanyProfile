@@ -112,7 +112,7 @@ const Header = () => {
           </section>
 
           <section className="flex flex-col md:ml-7 w-fit absolute bottom-5">
-            <Image src="/images/Logo_TimSEA_Text.png" alt="Logo" width={231} height={231} className="md:w-72 h-auto" />
+            <Image src="/images/LogoTimSEAtext.png" alt="Logo" width={231} height={231} className="md:w-72 h-auto" />
             <i className="mx-auto md:text-xl">Your SEA Winning Team</i>
           </section>
         </div>
