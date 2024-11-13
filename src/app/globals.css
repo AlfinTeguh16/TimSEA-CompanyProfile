@@ -32,7 +32,7 @@ body {
     background-image: url('/images/seaMaps.png');
     background-repeat: no-repeat;
     background-size: auto 55%; 
-    background-position: right 0 center 30;
+    background-position: right 0 center;
   }
 }
 @media (min-width: 777px) {
@@ -40,7 +40,7 @@ body {
     background-image: url('/images/seaMaps.png');
     background-repeat: no-repeat;
     background-size: auto 65%; 
-    background-position: right 0 top 5;
+    background-position: right 0 top;
   }
 }
 
@@ -49,6 +49,6 @@ body {
     background-image: url('/images/seaMaps.png');
     background-repeat: no-repeat;
     background-size: auto 85%; 
-    background-position: right 0 top 5;
+    background-position: right 0 top ;
   }
 }
