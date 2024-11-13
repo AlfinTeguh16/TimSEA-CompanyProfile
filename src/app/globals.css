@@ -23,7 +23,7 @@ body {
 .responsive-container {
   background-image: url('/images/seaMaps.png');
   background-repeat: no-repeat;
-  background-size: auto 40%; 
+  background-size: auto 32%; 
   background-position: right 0 center;
 }
 
