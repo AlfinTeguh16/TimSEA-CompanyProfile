@@ -13,13 +13,10 @@ const Header = () => {
     }, []);
     return(
         <>
-        <section className="mb-5 responsive-container">
+        <section className="mb-5 responsive-container ">
         <div className="w-full h-screen">
           <section className="flex flex-row justify-between pt-6 md:pt-8 ">
-            <div>
-              <Image src="/images/Logo.png" alt="Logo" width={83} height={83}  className="md:w-28 xl:w-32" />
-            </div>
-            <div className="justify-end">
+            <div className="justify-start px-4 md:px-20 xl:px-20 md:py-20 xl:py-20">
               {isClient && (
                 <>
                 <h2>
@@ -46,7 +43,7 @@ const Header = () => {
                     ]}
                     speed={50}
                     repeat={Infinity}
-                    className="font-bold"
+                    className="font-bold text-white md:text-2xl"
                   />
                 </h2>
                 <section className="flex flex-col">
@@ -75,6 +72,7 @@ const Header = () => {
                         ]}
                         speed={50}
                         repeat={Infinity}
+                        className="text-white md:text-2xl"
                       />
                     </h3>
                   </div>
@@ -101,6 +99,7 @@ const Header = () => {
                         ]}
                         speed={50}
                         repeat={Infinity}
+                        className="text-white md:text-2xl"
                       />
                     </h3>
                   </div>
@@ -111,19 +110,22 @@ const Header = () => {
             </div>
           </section>
 
-          <section className="flex flex-col md:ml-7 w-fit absolute bottom-5">
-            <Image src="/images/LogoTimSEAtext.png" alt="Logo" width={231} height={231} className="md:w-72 h-auto" />
-            <i className="mx-auto md:text-xl">Your SEA Winning Team</i>
+          <section className="flex flex-col px-4 md:px-20 xl:px-20 w-fit absolute bottom-3 md:bottom-20">
+            <Image src="/images/LogoTimSEAtext.png" alt="Logo" width={231} height={231} className="invert md:w-80 xl:w-96 h-auto" />
+            <i className="text-white mx-auto md:text-3xl">Your SEA Winning Team</i>
           </section>
         </div>
       </section>
 
-      <section className="border-b border-gray-400">
-        <div className="md:mx-20 xl:mx-20 xl:w-3/4 mb-6">
-          <h1 className="font-bold text-base md:text-lg xl:text-3xl text-text-color-navy">TimSEA is a specialist team in Southeast Asia’s (SEA) providing comprehensive services to help games and apps</h1>
-          <h3 className="text-sm md:text-base xl:text-2xl text-text-color-navy">The main goal of TimSEA is to become a Key Partner for the companies who wants to expand their market in Southeast Asia (SEA).</h3>
-        </div>
-      </section>
+        <section className="border-b border-gray-400 -mt-10 pb-10">
+          <div className="mx-4 md:mx-20 xl:mx-20 xl:w-3/4 mb-6">
+          <p className="font-bold text-base md:text-2xl xl:text-3xl text-white leading-4 md:leading-7">
+            TimSEA helps companies expand their presence in Southeast Asia.
+          </p>
+            <h3 className="text-sm md:text-base xl:text-xl text-white">We provide comprehensive support, including market research, strategy development for market penetration and user acquisition, community-building for your product, social media management, connect you with influencer and media partnerships, and oversight of your operational activities in the SEA region, and much more</h3>
+          </div>
+        </section>
+
         </>
     );
 }

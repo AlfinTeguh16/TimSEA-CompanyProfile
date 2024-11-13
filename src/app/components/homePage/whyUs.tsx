@@ -1,6 +1,8 @@
 import React from "react";
 import { Element } from "react-scroll";
-import { PiChartLineBold, PiUsersThreeBold, PiChecksBold, PiPresentationChartBold } from "react-icons/pi";
+import { BsPersonBadge } from "react-icons/bs";
+import { RiTeamLine } from "react-icons/ri";
+import { PiChartLineBold, PiUsersThreeBold, PiPresentationChartBold, PiHandshakeBold } from "react-icons/pi";
 
 interface ServiceInfo {
     icon: React.ElementType;
@@ -11,24 +13,34 @@ interface ServiceInfo {
 const services: ServiceInfo[] = [
     {
         icon: PiChartLineBold,
-        title: "Tailored Strategies for Each Market",
-        description: "With localized insights and data, we create tailored launch and growth strategies specific to each SEA country, ensuring maximum reach and efficiency."
+        title: "Market Expertise and Local Insights",
+        description: "TimSEA brings in-depth expertise across various industries in Southeast Asia, understanding key market dynamics, consumer preferences, and cultural nuances across the region. Our local insights enable us to tailor strategies that effectively resonate with diverse SEA demographics."
     },
     {
         icon: PiUsersThreeBold,
-        title: "Experienced and Dedicated Team",
-        description: "Our team comprises seasoned professionals who are deeply familiar with SEA’s landscape. We are passionate about fostering growth for our clients and dedicated to achieving sustainable success."
+        title: "End-to-End Localization Services",
+        description: "We provide comprehensive, culturally sensitive localization services, including language adaptation, visual design, and cultural references. This ensures that your brand connects meaningfully with local audiences, increasing engagement and customer satisfaction."
     },
     {
-        icon: PiChecksBold,
-        title: "Proven Track Record of Success",
-        description: "TimSEA has a portfolio of successful collaborations, having supported multiple titles to launch, grow, and thrive in SEA. Our client success stories speak to our effectiveness in driving downloads, engagement, and monetization."
+        icon: BsPersonBadge,
+        title: "Strategic Partnerships and Networking",
+        description: "TimSEA has built extensive networks with local influencers, media outlets, business communities, and industry platforms. Our established relationships provide clients with immediate access to key market players and strategic promotional channels in the SEA region"
+    },
+    {
+        icon: PiHandshakeBold,
+        title: "Community Engagement and Brand Building",
+        description: "We specialize in building and nurturing communities around your brand, enhancing visibility and loyalty. Through local events, partnerships with influencers, and community-driven initiatives, we help strengthen your brand’s presence in the SEA market"
+    },
+    {
+        icon: RiTeamLine,
+        title: "Experienced and Dedicated Team",
+        description: "Our team consists of experienced professionals deeply familiar with Southeast Asia’s business landscape. We are passionate about driving growth for our clients and committed to delivering sustainable success"
     },
     {
         icon: PiPresentationChartBold,
-        title: "Scalable Solutions for Growing with the Market",
-        description: "TimSEA offers scalable solutions to support you, from launch campaigns to ongoing user acquisition and retention efforts, helping you maintain growth momentum."
-    }
+        title: "Scalable Solutions for Growth",
+        description: "As your business expands, TimSEA offers scalable solutions to support your growth journey, from initial market entry to ongoing consumer engagement and retention efforts. We’re here to help you keep pace with the dynamic SEA market"
+    },
 ];
 
 const ServiceSection: React.FC<ServiceInfo> = ({ icon: Icon, title, description }) => (
@@ -40,7 +52,7 @@ const ServiceSection: React.FC<ServiceInfo> = ({ icon: Icon, title, description 
         </div>
         <div className="flex flex-col align-middle px-2 my-auto max-w-5xl md:w-full">
             <span>
-                <h1 className="font-bold">{title}</h1>
+                <h1 className="font-bold text-base md:text-xl">{title}</h1>
             </span>
             <span className="text-xs md:text-base text-justify">
                 {description}
@@ -53,14 +65,19 @@ const WhyUs: React.FC = () => {
     return (
         <>
         <Element name="whyUS">
-            <h1 className="font-bold text-text-color-navy text-3xl xl:text-5xl my-10">Why Choose Us</h1>
+            <h1 className="px-4 md:px-20 xl:px-20 font-bold text-text-color-navy text-3xl xl:text-5xl my-10">Why Us?</h1>
             <div className="flex flex-col md:flex-row">
                 {services.slice(0, 2).map((service, index) => (
                     <ServiceSection key={index} {...service} />
                 ))}
             </div>
             <div className="flex flex-col md:flex-row">
-                {services.slice(2).map((service, index) => (
+                {services.slice(2, 4).map((service, index) => (
+                    <ServiceSection key={index} {...service} />
+                ))}
+            </div>
+            <div className="flex flex-col md:flex-row">
+                {services.slice(4, 6).map((service, index) => (
                     <ServiceSection key={index} {...service} />
                 ))}
             </div>

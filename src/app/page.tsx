@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <>
-    <section>
+    <section className=' bg-gradient-to-l to-cerulean-500 from-blue-ribbon-500'>
       <Header/>
     </section>
 

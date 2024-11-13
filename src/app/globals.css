@@ -21,17 +21,26 @@ body {
 }
 
 .responsive-container {
-  background-image: url('/images/SEA-map.svg');
+  background-image: url('/images/TimSEADeck.png');
   background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: center;
+  background-size: auto 50%; 
+  background-position: right 0 center;
 }
 
-@media (min-width: 768px) { /* untuk tablet dan desktop */
+@media (min-width: 777px) {
   .responsive-container {
-    background-image: url('/images/SEA-map.svg');
+    background-image: url('/images/TimSEADeck.png');
     background-repeat: no-repeat;
-    background-size: 55%;
-    background-position: center;
+    background-size: auto 60%; 
+    background-position: right 0 center;
+  }
+}
+
+@media (min-width: 860px) {
+  .responsive-container {
+    background-image: url('/images/TimSEADeck.png');
+    background-repeat: no-repeat;
+    background-size: auto 80%; 
+    background-position: right 0 center;
   }
 }

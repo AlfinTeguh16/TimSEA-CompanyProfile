@@ -21,7 +21,7 @@ const Navbar = () => {
             <nav className="flex w-full justify-between p-3 shadow-lg">
                 <Link href="/" className="flex flex-row w-full">
                     <Image src="/images/Logo.png" alt="Logo" width={40} height={24} />
-                    <Image src="/images/LogoTimSEAtext.png" alt="Logo" width={80} height={24} />
+                    <Image src="/images/LogoTimSEAtext.png" alt="Logo" width={100} height={24} />
                 </Link>
                 <div className="flex flex-row justify-end w-full align-middle my-auto">
                     <div className="hidden md:block">
