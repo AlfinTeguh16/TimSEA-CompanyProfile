@@ -40,7 +40,7 @@ body {
     background-image: url('/images/seaMaps.png');
     background-repeat: no-repeat;
     background-size: auto 65%; 
-    background-position: right 0 top 10;
+    background-position: right 0 top 5;
   }
 }
 
@@ -49,6 +49,6 @@ body {
     background-image: url('/images/seaMaps.png');
     background-repeat: no-repeat;
     background-size: auto 85%; 
-    background-position: right 0 top 10;
+    background-position: right 0 top 5;
   }
 }
