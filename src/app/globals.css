@@ -23,32 +23,32 @@ body {
 .responsive-container {
   background-image: url('/images/seaMaps.png');
   background-repeat: no-repeat;
-  background-size: 95vw; 
-  background-position: right 0 top 150;
+  background-size:  95vw; 
+  background-position: 100% 30%;
 }
 
-/* @media (min-width: 423px) {
+@media (min-width: 423px) {
   .responsive-container {
     background-image: url('/images/seaMaps.png');
     background-repeat: no-repeat;
-    background-size: auto 55%; 
-    background-position: right 0 top 100;
+    background-size:  80vw; 
+    background-position: 100% 30%;
   }
-} */
-@media (min-width: 600px) {
+}
+@media (min-width: 777px) {
   .responsive-container {
     background-image: url('/images/seaMaps.png');
     background-repeat: no-repeat;
-    background-size: auto 70vw; 
-    background-position: right 0 top 30;
+    background-size:  70vw; 
+    background-position: 100% 30%;
   }
 }
 
-@media (min-width: 765px) {
+@media (min-width: 860px) {
   .responsive-container {
     background-image: url('/images/seaMaps.png');
     background-repeat: no-repeat;
-    background-size: 60vw; 
-    background-position: right 0 top 10;
+    background-size:  57vw; 
+    background-position: 100% 20% ;
   }
 }
