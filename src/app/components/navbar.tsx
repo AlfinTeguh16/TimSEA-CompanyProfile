@@ -18,16 +18,15 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="flex w-full justify-between p-3 shadow-lg">
+            <nav className="flex w-full justify-between px-3 py-2 shadow-lg">
                 <Link href="/" className="flex flex-row w-full">
                     <Image src="/images/Logo.png" alt="Logo" width={40} height={24} />
-                    <Image src="/images/LogoTimSEAtext.png" alt="Logo" width={100} height={24} />
                 </Link>
                 <div className="flex flex-row justify-end w-full align-middle my-auto">
                     <div className="hidden md:block">
-                        <ScrollLink to="services" smooth={true} duration={500} className="p-2 mx-2 rounded-lg hover:bg-gray-50">WHAT WE DO</ScrollLink>
-                        <ScrollLink to="whyUs" smooth={true} duration={500} className="p-2 mx-2 rounded-lg hover:bg-gray-50">WHY US</ScrollLink>
-                        <ScrollLink to="contact" smooth={true} duration={500} className="p-2 mx-2 rounded-lg text-white font-bold bg-gradient-to-l to-cerulean-500 from-blue-ribbon-500 hover:to-cerulean-700 hover:from-blue-ribbon-700">CONTACT</ScrollLink>
+                        <ScrollLink to="services" smooth={true} duration={500} className="p-2 mx-2 text-base rounded-lg hover:bg-gray-50">WHAT WE DO</ScrollLink>
+                        <ScrollLink to="whyUs" smooth={true} duration={500} className="p-2 mx-2 text-base rounded-lg hover:bg-gray-50">WHY US</ScrollLink>
+                        <ScrollLink to="contact" smooth={true} duration={500} className="p-2 mx-2 text-base rounded-lg text-white font-bold bg-gradient-to-l to-cerulean-500 from-blue-ribbon-500 hover:to-cerulean-700 hover:from-blue-ribbon-700">CONTACT</ScrollLink>
                     </div>
                 </div>
                 <div>
