@@ -122,7 +122,7 @@ const Header = () => {
           <p className="font-bold text-base md:text-2xl text-white leading-4 md:leading-7 mb-3">
             TimSEA helps companies expand their presence in Southeast Asia.
           </p>
-            <h3 className="text-sm  md:text-base text-white">We provide comprehensive support including market research, strategy development for market penetration and user acquisition, community-building for your product, social media management, connect you with influencer and media partnerships, and oversight of your operational activities in the SEA region, and much more</h3>
+            <h3 className="text-sm  md:text-base text-white">We provide comprehensive support including market research, strategy development for market penetration and user acquisition, community-building for your product, social media management, connect you with influencer and media partner, and oversight of your operational activities in the SEA region.</h3>
           </div>
         </section>
 
