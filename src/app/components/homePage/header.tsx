@@ -119,10 +119,10 @@ const Header = () => {
 
         <section className="border-b border-gray-400 -mt-10 pb-10">
           <div className="mx-4 md:mx-20 xl:mx-20 xl:w-3/4 mb-6">
-          <p className="font-bold text-base md:text-2xl xl:text-3xl text-white leading-4 md:leading-7">
+          <p className="font-bold text-base md:text-2xl xl:text-3xl text-white leading-4 md:leading-7 mb-3">
             TimSEA helps companies expand their presence in Southeast Asia.
           </p>
-            <h3 className="text-sm md:text-base xl:text-xl text-white">We provide comprehensive support, including market research, strategy development for market penetration and user acquisition, community-building for your product, social media management, connect you with influencer and media partnerships, and oversight of your operational activities in the SEA region, and much more</h3>
+            <h3 className="text-sm md:text-base xl:text-xl text-white">We provide comprehensive support including market research, strategy development for market penetration and user acquisition, community-building for your product, social media management, connect you with influencer and media partnerships, and oversight of your operational activities in the SEA region, and much more</h3>
           </div>
         </section>
 

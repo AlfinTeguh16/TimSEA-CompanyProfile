@@ -46,11 +46,11 @@ const Services: React.FC = () => {
                             <>
                                 We offer comprehensive support to ensure you have the right team in place for a successful venture into the Southeast Asian market. From recruitment to management, we take care of the essential teams needed for seamless operations, including:
                                 <span className="flex flex-col">
-                                    <span>- Social Media Team – Engaging and growing your online presence</span>
-                                    <span>- Community Building Team – Cultivating strong, loyal relationships with your user base</span>
-                                    <span>- Design Team – Creating visually stunning content that speaks to your audience</span>
-                                    <span>- Programming & Game Development Team – Ensuring top-notch technical development and maintenance</span>
-                                    <span>- Interpreter Team – Overcoming language barriers to reach all Southeast Asian markets</span>
+                                    <span>• Social Media Team – Engaging and growing your online presence</span>
+                                    <span>• Community Building Team – Cultivating strong, loyal relationships with your user base</span>
+                                    <span>• Design Team – Creating visually stunning content that speaks to your audience</span>
+                                    <span>• Programming & Game Development Team – Ensuring top•notch technical development and maintenance</span>
+                                    <span>• Interpreter Team – Overcoming language barriers to reach all Southeast Asian markets</span>
                                     <span>And more</span>
                                 </span>
                             </>

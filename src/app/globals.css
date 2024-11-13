@@ -21,15 +21,23 @@ body {
 }
 
 .responsive-container {
-  background-image: url('/images/TimSEADeck.png');
+  background-image: url('/images/seaMaps.png');
   background-repeat: no-repeat;
-  background-size: auto 50%; 
+  background-size: auto 30%; 
   background-position: right 0 center;
 }
 
+@media (min-width: 423px) {
+  .responsive-container {
+    background-image: url('/images/seaMaps.png');
+    background-repeat: no-repeat;
+    background-size: auto 50%; 
+    background-position: right 0 center;
+  }
+}
 @media (min-width: 777px) {
   .responsive-container {
-    background-image: url('/images/TimSEADeck.png');
+    background-image: url('/images/seaMaps.png');
     background-repeat: no-repeat;
     background-size: auto 60%; 
     background-position: right 0 center;
@@ -38,7 +46,7 @@ body {
 
 @media (min-width: 860px) {
   .responsive-container {
-    background-image: url('/images/TimSEADeck.png');
+    background-image: url('/images/seaMaps.png');
     background-repeat: no-repeat;
     background-size: auto 80%; 
     background-position: right 0 center;
