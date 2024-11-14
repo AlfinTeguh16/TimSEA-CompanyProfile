@@ -9,13 +9,13 @@ const Contact = () => {
             <h1 className="px-4 md:px-20 xl:px-20 font-bold text-text-color-navy text-3xl xl:text-5xl my-10">Contact</h1>
 
             <div className=" w-full px-4 md:px-20 xl:px-20">
-                <a href="mailto: mytimsea@gmail.com" className="bg-blue-ribbon-50 p-2 md:p-4 flex flex-row align-middle justify-between hover:bg-blue-ribbon-100">
+                <a href="mailto: go@mytimsea.com" className="bg-blue-ribbon-50 p-2 md:p-4 flex flex-row align-middle justify-between hover:bg-blue-ribbon-100">
                     <div className="flex flex-row items-center">
                         <PiEnvelopeBold className="text-blue-ribbon-600 text-xl" />
                         <h1 className="ml-2">Email</h1>
                     </div>
                     <span className="flex flex-row">
-                        <p className="text-blue-ribbon-600 px-2">mytimsea@gmail.com</p>
+                        <p className="text-blue-ribbon-600 px-2">go@mytimsea.com</p>
                         <PiArrowRightBold className="my-auto text-blue-ribbon-600"/>
                     </span>
                 </a>
