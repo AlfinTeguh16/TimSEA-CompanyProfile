@@ -117,7 +117,7 @@ const Header = () => {
         </div>
       </section>
 
-        <section className="border-b border-gray-400 -mt-10 pb-10">
+        <section className="border-b border-gray-400 md:-mt-10 pb-10">
           <div className="mx-4 md:mx-20 xl:mx-20 xl:w-3/5 mb-6">
           <p className="font-bold text-base md:text-2xl text-white leading-4 md:leading-7 mb-3">
             TimSEA helps companies expand their presence in Southeast Asia.
