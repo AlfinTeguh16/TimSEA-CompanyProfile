@@ -109,8 +109,8 @@ const Contact = () => {
                                     Select an inquiry
                                 </option>
                                 <option value="PR Activation">PR Activation</option>
-                                <option value="Set up your team in SEA" >Set Up Your Team in Southeast Asia</option>
-                                <option value="Doing PR & Set up your team in SEA">PR & Set Up Your Team in Southeast Asia</option>
+                                <option value="Set up your team in Southeast Asia" >Set Up Your Team in Southeast Asia</option>
+                                <option value="Doing PR & Set up your team in Southeast Asia">PR & Set Up Your Team in Southeast Asia</option>
                             </select>
 
                             <button
