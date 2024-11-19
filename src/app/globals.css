@@ -24,7 +24,7 @@ body {
   background-image: url('/images/seaMaps.png');
   background-repeat: no-repeat;
   background-size:  95vw; 
-  background-position: 100% 30%;
+  background-position: 100% 50%;
 }
 
 @media (min-width: 423px) {
@@ -32,7 +32,7 @@ body {
     background-image: url('/images/seaMaps.png');
     background-repeat: no-repeat;
     background-size:  80vw; 
-    background-position: 100% 30%;
+    background-position: 100% 50%;
   }
 }
 @media (min-width: 777px) {
@@ -40,7 +40,7 @@ body {
     background-image: url('/images/seaMaps.png');
     background-repeat: no-repeat;
     background-size:  70vw; 
-    background-position: 100% 30%;
+    background-position: 100% 40%;
   }
 }
 
@@ -49,6 +49,6 @@ body {
     background-image: url('/images/seaMaps.png');
     background-repeat: no-repeat;
     background-size:  57vw; 
-    background-position: 100% 20% ;
+    background-position: 100% 35% ;
   }
 }
