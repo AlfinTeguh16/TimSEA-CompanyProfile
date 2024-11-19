@@ -30,7 +30,7 @@ const Services: React.FC = () => {
     return (
         <Element name="services">
             <div>
-                <h1 className="px-4 md:px-20 xl:px-20 font-bold text-text-color-navy text-3xl xl:text-5xl my-10">WHAT WE DO</h1>
+                <h1 className="px-4 md:px-20 xl:px-20 font-bold text-text-color-navy text-3xl xl:text-5xl my-10">What We Do</h1>
                 <section className="px-4 md:px-20 xl:px-20 h-full flex flex-col md:gap-x-8">
                     <ServiceCard 
                         icon={PiUserSoundBold} 
@@ -46,11 +46,11 @@ const Services: React.FC = () => {
                             <>
                                 We offer comprehensive support to ensure you have the right team in place for a successful venture into the Southeast Asian market. From recruitment to management, we take care of the essential teams needed for seamless operations, including:
                                 <span className="flex flex-col">
-                                    <span>• Social Media Team – Engaging and growing your online presence</span>
-                                    <span>• Community Building Team – Cultivating strong, loyal relationships with your user base</span>
-                                    <span>• Design Team – Creating visually stunning content that speaks to your audience</span>
-                                    <span>• Programming & Game Development Team – Ensuring top•notch technical development and maintenance</span>
-                                    <span>• Interpreter Team – Overcoming language barriers to reach all Southeast Asian markets</span>
+                                    <span>• Social Media Team &#8211; Engaging and growing your online presence</span>
+                                    <span>• Community Building Team &#8211; Cultivating strong, loyal relationships with your user base</span>
+                                    <span>• Design Team &#8211; Creating visually stunning content that speaks to your audience</span>
+                                    <span>• Programming & Game Development Team &#8211; Ensuring top-notch technical development and maintenance</span>
+                                    <span>• Interpreter Team &#8211; Overcoming language barriers to reach all Southeast Asian markets</span>
                                     <span>And more</span>
                                 </span>
                             </>
