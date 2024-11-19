@@ -15,7 +15,7 @@ const Header = () => {
         <>
         <section className="mb-5 responsive-container ">
         <div className="w-full h-screen">
-          <section className="flex flex-row justify-between pt-6 md:pt-8 ">
+          <section className="flex flex-row justify-between pt-16 md:pt-8 ">
             <div className="justify-start px-4 md:px-20 xl:px-20 md:py-20 xl:py-20">
               {isClient && (
                 <>
