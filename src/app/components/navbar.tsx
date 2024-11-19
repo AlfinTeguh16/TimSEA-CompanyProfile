@@ -35,13 +35,14 @@ const Navbar = () => {
 
     return (
         <>
+        <section className="w-full flex justify-center h-fit">
             <nav
-                className={`fixed top-0 w-full z-40 flex items-center justify-between px-3 py-2 md:px-4 md:py-3 shadow-lg transition-all duration-300 ${
+                className={`fixed top-0 z-40 flex items-center px-3 py-2 md:px-4 md:py-3 shadow-lg transition-all duration-300 ${
                     isMobileMenuVisible
                         ? 'hidden'
                         : isScrolled
-                        ? 'bg-white bg-opacity-80 mt-2 w-4/5 mx-[10%] flex justify-center rounded-xl'
-                        : 'bg-white w-full'
+                        ? 'bg-white bg-opacity-80 mt-2 w-4/5 mx-auto flex justify-between rounded-xl'
+                        : 'bg-white w-full flex justify-between'
                 }`}
             >
                 <Link href="/" className="flex flex-row w-full">
@@ -99,6 +100,7 @@ const Navbar = () => {
                     </div>
                 </div>
             )}
+        </section>
         </>
     );
 };
