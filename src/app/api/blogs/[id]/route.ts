@@ -1,20 +1,30 @@
 import { ObjectId } from "mongodb";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
 import clientPromise from "../../../../lib/mongodb";
 
 
-export async function GET(req: Request, { params }: { params: { id: string } }) {
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
+    // Buat koneksi ke database
     const db = (await clientPromise).db("db_mytimsea");
+
+    // Konversi `params.id` menjadi ObjectId untuk pencarian MongoDB
     const blog = await db.collection("blogs").findOne({ _id: new ObjectId(params.id) });
 
+    // Jika blog tidak ditemukan, kembalikan error 404
     if (!blog) {
       return NextResponse.json({ error: "Blog not found" }, { status: 404 });
     }
 
+    // Kembalikan data blog dalam format JSON
     return NextResponse.json(blog);
   } catch (error) {
     console.error("Error fetching blog:", error);
+
+    // Kembalikan respons error 500 jika terjadi kesalahan
     return NextResponse.json({ error: "Failed to fetch blog" }, { status: 500 });
   }
 }
