@@ -2,11 +2,12 @@ import { ObjectId } from "mongodb";
 import { NextRequest, NextResponse } from "next/server";
 import clientPromise from "../../../../lib/mongodb";
 
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest) {
   try {
-    const id = params.id;
+    const id = req.nextUrl.pathname.split("/").pop(); // Ambil id dari URL
 
-    if (!ObjectId.isValid(id)) {
+    // Validasi id
+    if (!id || !ObjectId.isValid(id)) {
       return NextResponse.json({ error: "Invalid ID parameter" }, { status: 400 });
     }
 
@@ -24,25 +25,22 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
   }
 }
 
-
-export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(req: NextRequest) {
   try {
-    const id = params.id;
+    const id = req.nextUrl.pathname.split("/").pop(); // Ambil id dari URL
 
-    // Validasi ID
-    if (!ObjectId.isValid(id)) {
+    // Validasi id
+    if (!id || !ObjectId.isValid(id)) {
       return NextResponse.json({ error: "Invalid ID parameter" }, { status: 400 });
     }
 
     const body = await req.json();
 
-    // Validasi body kosong
     if (!body || Object.keys(body).length === 0) {
       return NextResponse.json({ error: "Request body cannot be empty" }, { status: 400 });
     }
 
     const db = (await clientPromise).db("db_mytimsea");
-
     const result = await db.collection("blogs").updateOne(
       { _id: new ObjectId(id) },
       { $set: body }
@@ -59,17 +57,16 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
   }
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(req: NextRequest) {
   try {
-    const id = params.id;
+    const id = req.nextUrl.pathname.split("/").pop(); // Ambil id dari URL
 
-    // Validasi ID
-    if (!ObjectId.isValid(id)) {
+    // Validasi id
+    if (!id || !ObjectId.isValid(id)) {
       return NextResponse.json({ error: "Invalid ID parameter" }, { status: 400 });
     }
 
     const db = (await clientPromise).db("db_mytimsea");
-
     const result = await db.collection("blogs").deleteOne({ _id: new ObjectId(id) });
 
     if (result.deletedCount === 0) {
@@ -82,4 +79,3 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
     return NextResponse.json({ error: "Failed to delete blog" }, { status: 500 });
   }
 }
-
