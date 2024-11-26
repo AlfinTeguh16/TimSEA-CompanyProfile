@@ -102,39 +102,37 @@ const EditBlog: React.FC = () => {
   };
 
   const submitEdit = async () => {
-    const formData = new FormData();
-    formData.append("title", title);
-
-    content.forEach((item, index) => {
-      if (item.file) {
-        formData.append(`file_${index}`, item.file);
-      }
-      formData.append(
-        `content_${index}`,
-        JSON.stringify({ type: item.type, value: item.value })
-      );
-    });
-
     try {
+      // Siapkan data JSON untuk dikirim ke backend
+      const payload = {
+        title,
+        content,
+      };
+  
       const response = await fetchWithAuth(`/api/blogs/${id}`, {
-        method: "PATCH",
-        body: formData,
+        method: "PUT", // Sesuaikan dengan metode di backend
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
       });
-
+  
       if (response.ok) {
         alert("Blog updated successfully!");
         router.push(`/blogs/${id}`);
       } else {
+        // Tangani error dari respons
         const error = await response.json();
         console.error("Error:", error);
-        alert("Failed to update blog.");
+        alert(error?.message || "Failed to update blog.");
       }
     } catch (error) {
+      // Tangani error jaringan atau masalah lainnya
       console.error("Error submitting blog:", error);
       alert("An error occurred.");
     }
   };
-
+  
   if (loading) {
     return <div>Loading...</div>;
   }
