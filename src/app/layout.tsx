@@ -10,10 +10,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <head>
           <title>TimSEA</title>
       </head>
-      <body>
+      <body className='text-black'>
         <Navbar />
         <main>{children}</main>
-        <footer className='bg-blue-ribbon-700 p-5 mt-10'>
+        <footer className='bg-blue-ribbon-700 p-5 mt-10 bottom-0'>
           <p className='text-white font-bold flex justify-center'>&copy; 2024 TimSEA</p>
         </footer>
       </body>
