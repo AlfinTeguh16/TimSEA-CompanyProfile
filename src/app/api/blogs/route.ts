@@ -8,6 +8,12 @@ interface ContentItem {
   value: string;
 }
 
+export const config = {
+  api: {
+    bodyParser: false, // Nonaktifkan body parser
+  },
+};
+
 export async function POST(req: Request) {
   try {
     const db = (await clientPromise).db("db_mytimsea");
@@ -16,6 +22,7 @@ export async function POST(req: Request) {
     const title = formData.get("title") as string;
     const content: ContentItem[] = [];
 
+    // Buat folder upload jika belum ada
     const uploadDir = path.join(process.cwd(), "public", "uploads");
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir, { recursive: true });
@@ -24,8 +31,12 @@ export async function POST(req: Request) {
     for (const [key, value] of formData.entries()) {
       if (key.startsWith("file_") && value instanceof File) {
         const filePath = path.join(uploadDir, value.name);
+        const writeStream = fs.createWriteStream(filePath);
+
+        // Gunakan streaming untuk menulis file langsung ke sistem
         const buffer = Buffer.from(await value.arrayBuffer());
-        fs.writeFileSync(filePath, buffer);
+        writeStream.write(buffer);
+        writeStream.end();
 
         content.push({ type: "file", value: `/uploads/${value.name}` });
       } else if (key.startsWith("content_")) {
@@ -55,4 +66,3 @@ export async function GET() {
     return NextResponse.json({ error: "Failed to fetch blogs" }, { status: 500 });
   }
 }
-
