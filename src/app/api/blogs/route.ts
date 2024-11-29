@@ -10,7 +10,7 @@ interface ContentItem {
 
 export const config = {
   api: {
-    bodyParser: false, // Nonaktifkan body parser
+    bodyParser: false,
   },
 };
 

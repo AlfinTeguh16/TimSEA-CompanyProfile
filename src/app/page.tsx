@@ -23,7 +23,7 @@ export default function Home() {
         <WhyUs/>
     </section>
 
-    <section id="blogCard" className='bg-gradient-to-tl to-text-color-navy from-blue-ribbon-700 py-5 md:py-16'>
+    <section id="blogCard" className='bg-gradient-to-tl to-text-color-navy from-blue-ribbon-700 py-5 md:py-16 mt-10'>
         <BlogCard/>
     </section>
 

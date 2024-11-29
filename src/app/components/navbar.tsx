@@ -56,6 +56,9 @@ const Navbar = () => {
                         <ScrollLink to="whyUs" smooth={true} duration={500} className="cursor-pointer p-2 mx-2 text-base rounded-lg hover:bg-gray-50">
                             WHY US
                         </ScrollLink>
+                        <ScrollLink to="blog" smooth={true} duration={500} className="cursor-pointer p-2 mx-2 text-base rounded-lg hover:bg-gray-50">
+                            ARTICLE
+                        </ScrollLink>
                         <ScrollLink to="contact" smooth={true} duration={500} className="cursor-pointer p-2 ml-2 text-base rounded-lg text-white font-bold bg-gradient-to-l to-cerulean-500 from-blue-ribbon-500 hover:to-cerulean-700 hover:from-blue-ribbon-700">
                             CONTACT
                         </ScrollLink>
@@ -90,6 +93,11 @@ const Navbar = () => {
                         <span className="my-3 p-2 border-b">
                             <ScrollLink to="whyUs" smooth={true} duration={500} onClick={closeMobileMenu} className="text-black">
                                 WHY US
+                            </ScrollLink>
+                        </span>
+                        <span className="my-3 p-2 border-b">
+                            <ScrollLink to="blog" smooth={true} duration={500} onClick={closeMobileMenu} className="text-black">
+                                ARTICLE
                             </ScrollLink>
                         </span>
                         <span className="my-3">

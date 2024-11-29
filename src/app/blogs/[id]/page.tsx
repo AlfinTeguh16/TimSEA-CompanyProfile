@@ -3,9 +3,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
+import Contact from '../../components/homePage/contact';
 
 interface Content {
-  type: "text" | "video" | "youtube" | "link" | "file" | "header" | "list";
+  type: "text" | "image" | "video" | "file" | "youtube" | "link" | "header" | "subheader" | "list" | "media-note";
   value: string | string[];
 }
 
@@ -58,11 +59,12 @@ const BlogDetail: React.FC = () => {
   }
 
   return (
+    <>
     <div className="p-6 max-w-3xl mx-auto mt-16">
       <h1 className="text-xl md:text-5xl w-full flex justify-center mx-auto font-bold mb-6">
         {blog.title}
       </h1>
-      <div className="space-y-6">
+      <div className="gap-y-2">
         {blog.content.map((item, index) => (
           <div key={index} className="mb-4">
             {item.type === "text" && (
@@ -73,6 +75,20 @@ const BlogDetail: React.FC = () => {
               <h1 className="w-full text-justify text-2xl font-bold">
                 {item.value}
               </h1>
+            )}
+
+            {item.type === "subheader" && (
+              <h1 className="w-full text-justify text-xl font-bold">
+                {item.value}
+              </h1>
+            )}
+
+            {item.type === "media-note" && (
+            <div className="w-full flex justify-center -mt-3">
+              <h1 className="w-full text-center text-sm font-bold">
+                {item.value}
+              </h1>
+            </div>
             )}
 
             {item.type === "file" && typeof item.value === "string" && (
@@ -117,7 +133,7 @@ const BlogDetail: React.FC = () => {
             )}
 
             {item.type === "list" && Array.isArray(item.value) && (
-              <ul className="list-disc pl-5 space-y-2">
+              <ul className="list-disc ml-10">
                 {item.value.map((listItem, listIndex) => (
                   <li key={listIndex} className="text-justify">
                     {listItem}
@@ -129,6 +145,11 @@ const BlogDetail: React.FC = () => {
         ))}
       </div>
     </div>
+    
+    <span className="mx-auto block w-4/5 h-0.5 bg-black my-10"></span>
+
+    <Contact/>
+    </>
   );
 };
 

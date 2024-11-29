@@ -8,7 +8,7 @@ import { PiTrash } from "react-icons/pi";
 import { fetchWithAuth } from "../../../utils/fetchWithAuth";
 
 interface Content {
-  type: "text" | "image" | "video" | "youtube" | "link" | "header" | "list" | "file";
+  type: "text" | "image" | "video" | "youtube" | "link" | "header" | "subheader" | "list" | "media-note" | "file";
   value: string | string[];
   file?: File;
 }
@@ -45,15 +45,20 @@ const EditBlog: React.FC = () => {
     setContent([...content, newContent]);
   };
 
-  const handleTextChange = (
-    index: number,
-    value: string,
-    type: Content["type"]
-  ) => {
+  // const handleTextChange = (
+  //   index: number,
+  //   value: string,
+  //   type: Content["type"]
+  // ) => {
+  //   const updatedContent = [...content];
+  //   if (type === "text") {
+  //     updatedContent[index].value = value;
+  //   }
+  //   setContent(updatedContent);
+  // };
+  const handleTextChange = (index: number, value: string) => {
     const updatedContent = [...content];
-    if (type === "text") {
-      updatedContent[index].value = value;
-    }
+    updatedContent[index].value = value;
     setContent(updatedContent);
   };
   
@@ -160,7 +165,7 @@ const EditBlog: React.FC = () => {
                 placeholder="Enter text"
                 value={item.value as string}
                 onChange={(e) =>
-                  handleTextChange(index, e.target.value, item.type)
+                  handleTextChange(index, e.target.value)
                 }
                 className="border rounded-xl p-2 w-full"
               />
@@ -171,9 +176,31 @@ const EditBlog: React.FC = () => {
                 placeholder="Enter header text"
                 value={item.value as string}
                 onChange={(e) =>
-                  handleTextChange(index, e.target.value, item.type)
+                  handleTextChange(index, e.target.value)
                 }
                 className="border font-bold rounded-xl p-2 w-full"
+              />
+            )}
+            {item.type === "subheader" && (
+              <input
+                type="text"
+                placeholder="Enter text subheader"
+                value={item.value as string}
+                onChange={(e) =>
+                  handleTextChange(index, e.target.value)
+                }
+                className="border font-semibold rounded-xl p-2 w-full"
+              />
+            )}
+            {item.type === "media-note" && (
+              <input
+                type="text"
+                placeholder="Enter text media-note"
+                value={item.value as string}
+                onChange={(e) =>
+                  handleTextChange(index, e.target.value)
+                }
+                className="border font-semibold rounded-xl p-2 w-full"
               />
             )}
             {item.type === "list" && (
@@ -212,7 +239,7 @@ const EditBlog: React.FC = () => {
                 </div>
               </div>
             )}
-            {item.type === "file" && (
+            {item.type === "image" && (
               <div className="flex flex-col">
                 <input
                   type="file"
@@ -244,7 +271,7 @@ const EditBlog: React.FC = () => {
       </div>
 
       <div className="mb-4 flex flex-wrap gap-2">
-        <button
+      <button
           onClick={() => addContent("text")}
           className="bg-transparent border rounded-full hover:bg-blue-500 text-gray-600 hover:text-white px-4 py-2"
         >
@@ -257,6 +284,12 @@ const EditBlog: React.FC = () => {
           Add Header
         </button>
         <button
+          onClick={() => addContent("subheader")}
+          className="bg-transparent border rounded-full hover:bg-blue-500 text-gray-600 hover:text-white px-4 py-2"
+        >
+          Add SubHeader
+        </button>
+        <button
           onClick={() => addContent("image")}
           className="bg-transparent border rounded-full hover:bg-blue-500 text-gray-600 hover:text-white px-4 py-2"
         >
@@ -267,6 +300,12 @@ const EditBlog: React.FC = () => {
           className="bg-transparent border rounded-full hover:bg-blue-500 text-gray-600 hover:text-white px-4 py-2"
         >
           Add Video
+        </button>
+        <button
+          onClick={() => addContent("media-note")}
+          className="bg-transparent border rounded-full hover:bg-blue-500 text-gray-600 hover:text-white px-4 py-2"
+        >
+          Add Media Note
         </button>
         <button
           onClick={() => addContent("youtube")}

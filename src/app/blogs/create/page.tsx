@@ -7,7 +7,7 @@ import { PiTrash } from "react-icons/pi";
 import { fetchWithAuth } from "../../utils/fetchWithAuth"; // Sesuaikan path sesuai struktur project
 
 interface Content {
-  type: "text" | "image" | "video" | "youtube" | "link" | "header" | "list";
+  type: "text" | "image" | "video" | "youtube" | "link" | "header" | "subheader" | "list" | "media-note" | "file";
   value: string | string[]; // List menggunakan array string
   file?: File;
 }
@@ -176,6 +176,28 @@ const CreateBlog: React.FC = () => {
                 className="border font-bold rounded-xl p-2 w-full"
               />
             )}
+            {item.type === "subheader" && (
+              <input
+                type="text"
+                placeholder="Enter text subheader"
+                value={item.value as string}
+                onChange={(e) =>
+                  handleTextChange(index, e.target.value, item.type)
+                }
+                className="border font-semibold rounded-xl p-2 w-full"
+              />
+            )}
+            {item.type === "media-note" && (
+              <input
+                type="text"
+                placeholder="Enter text media-note"
+                value={item.value as string}
+                onChange={(e) =>
+                  handleTextChange(index, e.target.value, item.type)
+                }
+                className="border font-semibold rounded-xl p-2 w-full"
+              />
+            )}
             {item.type === "list" && (
               <div className="flex flex-col gap-4 w-full">
                 {(item.value as string[]).map((listItem, itemIndex) => (
@@ -236,6 +258,27 @@ const CreateBlog: React.FC = () => {
                 )}
               </div>
             )}
+            {item.type === "video" && (
+              <div className="flex flex-col">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) =>
+                    handleFileChange(index, e.target.files?.[0] || null)
+                  }
+                  className="border rounded-xl p-2 w-full"
+                />
+                {item.value && (
+                  <Image
+                    src={item.value as string}
+                    width={200}
+                    height={100}
+                    alt="Preview"
+                    className="w-fit h-fit rounded-md mt-3"
+                  />
+                )}
+              </div>
+            )}
             {item.type !== "list" && (
               <button
                 onClick={() => removeContent(index)}
@@ -262,6 +305,12 @@ const CreateBlog: React.FC = () => {
           Add Header
         </button>
         <button
+          onClick={() => addContent("subheader")}
+          className="bg-transparent border rounded-full hover:bg-blue-500 text-gray-600 hover:text-white px-4 py-2"
+        >
+          Add SubHeader
+        </button>
+        <button
           onClick={() => addContent("image")}
           className="bg-transparent border rounded-full hover:bg-blue-500 text-gray-600 hover:text-white px-4 py-2"
         >
@@ -272,6 +321,12 @@ const CreateBlog: React.FC = () => {
           className="bg-transparent border rounded-full hover:bg-blue-500 text-gray-600 hover:text-white px-4 py-2"
         >
           Add Video
+        </button>
+        <button
+          onClick={() => addContent("media-note")}
+          className="bg-transparent border rounded-full hover:bg-blue-500 text-gray-600 hover:text-white px-4 py-2"
+        >
+          Add Media Note
         </button>
         <button
           onClick={() => addContent("youtube")}

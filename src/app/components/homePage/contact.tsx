@@ -55,7 +55,7 @@ const Contact = () => {
                 <section className="mx-4 md:mx-20 xl:mx-20 rounded-3xl bg-text-color-navy p-4 md:p-6 xl:p-10 flex flex-col md:flex-row gap-3 my-2">
                     <div className="flex flex-col text-white md:w-1/2">
                         <div>
-                            <h1 className="text-3xl xl:text-5xl font-extrabold ">Embark Your Success Story With Us. </h1>
+                            <h1 className="text-3xl xl:text-5xl font-extrabold ">Embark Your Success Story With Us </h1>
                         </div>
 
                         <div className="my-5 w-fit">
@@ -106,7 +106,7 @@ const Contact = () => {
                                 className="p-3 rounded-lg bg-slate-100"
                             >
                                 <option value="" disabled>
-                                    Select an inquiry
+                                    Select an Inquiry
                                 </option>
                                 <option value="PR Activation">PR Activation</option>
                                 <option value="Set up your team in Southeast Asia" >Set Up Your Team in Southeast Asia</option>

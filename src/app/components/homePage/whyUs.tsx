@@ -24,22 +24,22 @@ const services: ServiceInfo[] = [
     {
         icon: BsPersonBadge,
         title: "Strategic Partnerships and Networking",
-        description: "TimSEA has built extensive networks with local influencers, media outlets, business communities, and industry platforms. Our established relationships provide clients with immediate access to key market players and strategic promotional channels in the SEA region"
+        description: "TimSEA has built extensive networks with local influencers, media outlets, business communities, and industry platforms. Our established relationships provide clients with immediate access to key market players and strategic promotional channels in the SEA region."
     },
     {
         icon: PiHandshakeBold,
         title: "Community Engagement and Brand Building",
-        description: "We specialize in building and nurturing communities around your brand, enhancing visibility and loyalty. Through local events, partnerships with influencers, and community-driven initiatives, we help strengthen your brand’s presence in the SEA market"
+        description: "We specialize in building and nurturing communities around your brand, enhancing visibility and loyalty. Through local events, partnerships with influencers, and community-driven initiatives, we help strengthen your brand’s presence in the SEA market."
     },
     {
         icon: RiTeamLine,
         title: "Experienced and Dedicated Team",
-        description: "Our team consists of experienced professionals deeply familiar with Southeast Asia’s business landscape. We are passionate about driving growth for our clients and committed to delivering sustainable success"
+        description: "Our team consists of experienced professionals deeply familiar with Southeast Asia’s business landscape. We are passionate about driving growth for our clients and committed to delivering sustainable success."
     },
     {
         icon: PiPresentationChartBold,
         title: "Scalable Solutions for Growth",
-        description: "As your business expands, TimSEA offers scalable solutions to support your growth journey, from initial market entry to ongoing consumer engagement and retention efforts. We’re here to help you keep pace with the dynamic SEA market"
+        description: "As your business expands, TimSEA offers scalable solutions to support your growth journey, from initial market entry to ongoing consumer engagement and retention efforts. We’re here to help you keep pace with the dynamic SEA market."
     },
 ];
 
