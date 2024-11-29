@@ -61,7 +61,7 @@ const BlogDetail: React.FC = () => {
   return (
     <>
     <div className="p-6 max-w-3xl mx-auto mt-16">
-      <h1 className="text-xl md:text-5xl w-full flex justify-center mx-auto font-bold mb-6">
+      <h1 className="text-2xl md:text-5xl w-full flex justify-center mx-auto font-bold mb-6">
         {blog.title}
       </h1>
       <div className="gap-y-2">
@@ -72,7 +72,7 @@ const BlogDetail: React.FC = () => {
             )}
 
             {item.type === "header" && (
-              <h1 className="w-full text-justify text-2xl font-bold">
+              <h1 className="w-full text-justify text-2xl md:text-3xl font-bold">
                 {item.value}
               </h1>
             )}
