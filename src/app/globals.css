@@ -51,4 +51,12 @@ body {
     background-size:  57vw; 
     background-position: 100% 50% ;
   }
+
+.bg-blog{
+  background-image: url('/images/ARTICLE-4.png');
+  
+  /* background: linear-gradient(to top left, #0055ff, #001f54); */
+  background-size: 100%;
+}
+
 }
