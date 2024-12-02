@@ -24,13 +24,25 @@ export async function POST(req: Request) {
 
     // Buat folder upload jika belum ada
     const uploadDir = path.join(process.cwd(), "public", "uploads");
+    const bannerDir = path.join(process.cwd(), "public", "uploads", "banner");
+
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir, { recursive: true });
+    }
+    if (!fs.existsSync(bannerDir)) {
+      fs.mkdirSync(bannerDir, { recursive: true });
     }
 
     for (const [key, value] of formData.entries()) {
       if (key.startsWith("file_") && value instanceof File) {
-        const filePath = path.join(uploadDir, value.name);
+        let targetDir = uploadDir;
+
+        // Simpan banner pada folder /banner
+        if (key === "file_banner") {
+          targetDir = bannerDir;
+        }
+
+        const filePath = path.join(targetDir, value.name);
         const writeStream = fs.createWriteStream(filePath);
 
         // Gunakan streaming untuk menulis file langsung ke sistem
@@ -38,7 +50,10 @@ export async function POST(req: Request) {
         writeStream.write(buffer);
         writeStream.end();
 
-        content.push({ type: "file", value: `/uploads/${value.name}` });
+        const fileUrl = targetDir.includes("banner")
+          ? `/uploads/banner/${value.name}`
+          : `/uploads/${value.name}`;
+        content.push({ type: "file", value: fileUrl });
       } else if (key.startsWith("content_")) {
         content.push(JSON.parse(value as string));
       }
@@ -56,13 +71,37 @@ export async function POST(req: Request) {
   }
 }
 
+// export async function GET() {
+//   try {
+//     const db = (await clientPromise).db("db_mytimsea");
+//     const blogs = await db.collection("blogs").find().toArray();
+//     return NextResponse.json(blogs);
+//   } catch (error) {
+//     console.error("Error fetching blogs:", error);
+//     return NextResponse.json({ error: "Failed to fetch blogs" }, { status: 500 });
+//   }
+// }
+
 export async function GET() {
   try {
     const db = (await clientPromise).db("db_mytimsea");
+
+    // Fetch blogs data from database
     const blogs = await db.collection("blogs").find().toArray();
-    return NextResponse.json(blogs);
+
+    // Path to banner uploads folder
+    const bannerDir = path.join(process.cwd(), "public", "uploads", "banner");
+
+    // Check if banner directory exists
+    let bannerFiles: string[] = [];
+    if (fs.existsSync(bannerDir)) {
+      // Read all files in the banner directory
+      bannerFiles = fs.readdirSync(bannerDir).map((file) => `/uploads/banner/${file}`);
+    }
+
+    return NextResponse.json({ blogs, banners: bannerFiles });
   } catch (error) {
-    console.error("Error fetching blogs:", error);
-    return NextResponse.json({ error: "Failed to fetch blogs" }, { status: 500 });
+    console.error("Error fetching blogs or banners:", error);
+    return NextResponse.json({ error: "Failed to fetch blogs or banners" }, { status: 500 });
   }
 }

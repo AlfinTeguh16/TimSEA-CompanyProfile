@@ -4,60 +4,57 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { PiTrash } from "react-icons/pi";
-import { fetchWithAuth } from "../../utils/fetchWithAuth"; // Sesuaikan path sesuai struktur project
 
 interface Content {
-  type: "text" | "image" | "video" | "youtube" | "link" | "header" | "subheader" | "list" | "media-note" | "file";
-  value: string | string[]; // List menggunakan array string
+  type:
+    | "text"
+    | "image"
+    | "video"
+    | "youtube"
+    | "link"
+    | "header"
+    | "subheader"
+    | "list"
+    | "media-note"
+    | "file"
+    | "banner";
+  value: string | string[];
   file?: File;
 }
 
 const CreateBlog: React.FC = () => {
-  const [title, setTitle] = useState<string>(""); // Blog title
-  const [content, setContent] = useState<Content[]>([]); // Blog content array
-  const [isClient, setIsClient] = useState(false); // Hydration guard
+  const [title, setTitle] = useState<string>("");
+  const [content, setContent] = useState<Content[]>([]);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true); // Ensure this is only executed on the client
+    setIsClient(true);
   }, []);
 
-  // Adding new field
   const addContent = (type: Content["type"]) => {
-    if (type === "list") {
-      setContent([...content, { type, value: [] }]); // Default value for list is an empty array
-    } else {
-      setContent([...content, { type, value: "" }]);
-    }
+    const defaultValue = type === "list" ? [] : "";
+    setContent([...content, { type, value: defaultValue }]);
   };
 
-  const handleTextChange = (
-    index: number,
-    value: string,
-    type: Content["type"]
-  ) => {
+  const handleTextChange = (index: number, value: string) => {
     const updatedContent = [...content];
-
-    if (type === "text") {
-      // Split text into paragraphs
-      const paragraphs = value.split("\n").filter((line) => line.trim() !== "");
-      updatedContent.splice(
-        index,
-        1,
-        ...paragraphs.map((p) => ({ type: "text" as const, value: p }))
-      );
-    } else {
-      // Update directly for other types
-      updatedContent[index].value = value;
-    }
-
+    updatedContent[index].value = value;
     setContent(updatedContent);
   };
 
-  // Handle list changes
-  const handleListChange = (index: number, value: string, itemIndex: number) => {
+  const handleFileChange = (index: number, file: File | null) => {
+    if (!file) return;
+
+    const updatedContent = [...content];
+    updatedContent[index].value = URL.createObjectURL(file);
+    updatedContent[index].file = file;
+    setContent(updatedContent);
+  };
+
+  const handleListChange = (index: number, itemIndex: number, value: string) => {
     const updatedContent = [...content];
     if (Array.isArray(updatedContent[index].value)) {
-      updatedContent[index].value[itemIndex] = value; // Update specific list item
+      updatedContent[index].value[itemIndex] = value;
       setContent(updatedContent);
     }
   };
@@ -65,7 +62,7 @@ const CreateBlog: React.FC = () => {
   const addListItem = (index: number) => {
     const updatedContent = [...content];
     if (Array.isArray(updatedContent[index].value)) {
-      updatedContent[index].value.push(""); // Add new empty list item
+      updatedContent[index].value.push("");
       setContent(updatedContent);
     }
   };
@@ -73,29 +70,14 @@ const CreateBlog: React.FC = () => {
   const removeListItem = (index: number, itemIndex: number) => {
     const updatedContent = [...content];
     if (Array.isArray(updatedContent[index].value)) {
-      updatedContent[index].value.splice(itemIndex, 1); // Remove specific list item
+      updatedContent[index].value.splice(itemIndex, 1);
       setContent(updatedContent);
     }
   };
 
-  // Handle file upload
-  const handleFileChange = (index: number, file: File | null) => {
-    if (!file) return;
-
-    const updatedContent = [...content];
-    updatedContent[index].value = URL.createObjectURL(file); // Generate preview URL
-    updatedContent[index].file = file; // Save file for submission
-    setContent(updatedContent);
-  };
-
-  // Remove content field
   const removeContent = (index: number) => {
-    const updatedContent = content.filter((_, i) => i !== index);
-    setContent(updatedContent);
+    setContent(content.filter((_, i) => i !== index));
   };
-
-  // Submit data
-
 
   const submitBlog = async () => {
     const formData = new FormData();
@@ -103,16 +85,15 @@ const CreateBlog: React.FC = () => {
 
     content.forEach((item, index) => {
       if (item.file) {
-        formData.append(`file_${index}`, item.file);
+        const key = item.type === "banner" ? "file_banner" : `file_${index}`;
+        formData.append(key, item.file);
+      } else {
+        formData.append(`content_${index}`, JSON.stringify(item));
       }
-      formData.append(
-        `content_${index}`,
-        JSON.stringify({ type: item.type, value: item.value })
-      );
     });
 
     try {
-      const response = await fetchWithAuth("/api/blogs", {
+      const response = await fetch("/api/blogs", {
         method: "POST",
         body: formData,
       });
@@ -122,20 +103,15 @@ const CreateBlog: React.FC = () => {
         setTitle("");
         setContent([]);
       } else {
-        const error = await response.json();
-        console.error("Error:", error);
         alert("Failed to create blog.");
       }
     } catch (error) {
-      console.error("Error submitting blog:", error);
+      console.error(error);
       alert("An error occurred.");
     }
   };
 
-
-  if (!isClient) {
-    return null; // Ensure SSR mismatch is avoided
-  }
+  if (!isClient) return null;
 
   return (
     <div className="p-6 max-w-5xl mx-auto h-full">
@@ -155,51 +131,38 @@ const CreateBlog: React.FC = () => {
             key={index}
             className="mb-4 border p-4 rounded-lg shadow-sm flex flex-col gap-4"
           >
-            {item.type === "text" && (
-              <textarea
-                placeholder="Enter text (use Enter for new paragraph)"
+            {["text", "header", "subheader", "media-note"].includes(item.type) && (
+              <input
+                type="text"
+                placeholder={`Enter ${item.type}`}
                 value={item.value as string}
-                onChange={(e) =>
-                  handleTextChange(index, e.target.value, item.type)
-                }
+                onChange={(e) => handleTextChange(index, e.target.value)}
                 className="border rounded-xl p-2 w-full"
               />
             )}
-            {item.type === "header" && (
-              <input
-                type="text"
-                placeholder="Enter text header"
-                value={item.value as string}
-                onChange={(e) =>
-                  handleTextChange(index, e.target.value, item.type)
-                }
-                className="border font-bold rounded-xl p-2 w-full"
-              />
+
+            {["image", "banner", "video"].includes(item.type) && (
+              <div className="flex flex-col">
+                <input
+                  type="file"
+                  accept={item.type === "video" ? "video/*" : "image/*"}
+                  onChange={(e) => handleFileChange(index, e.target.files?.[0] || null)}
+                  className="border rounded-xl p-2 w-full"
+                />
+                {item.value && (
+                  <Image
+                    src={item.value as string}
+                    width={200}
+                    height={100}
+                    alt="Preview"
+                    className="w-fit h-fit rounded-md mt-3"
+                  />
+                )}
+              </div>
             )}
-            {item.type === "subheader" && (
-              <input
-                type="text"
-                placeholder="Enter text subheader"
-                value={item.value as string}
-                onChange={(e) =>
-                  handleTextChange(index, e.target.value, item.type)
-                }
-                className="border font-semibold rounded-xl p-2 w-full"
-              />
-            )}
-            {item.type === "media-note" && (
-              <input
-                type="text"
-                placeholder="Enter text media-note"
-                value={item.value as string}
-                onChange={(e) =>
-                  handleTextChange(index, e.target.value, item.type)
-                }
-                className="border font-semibold rounded-xl p-2 w-full"
-              />
-            )}
+
             {item.type === "list" && (
-              <div className="flex flex-col gap-4 w-full">
+              <div className="flex flex-col gap-2">
                 {(item.value as string[]).map((listItem, itemIndex) => (
                   <div key={itemIndex} className="flex items-center gap-2">
                     <input
@@ -207,150 +170,54 @@ const CreateBlog: React.FC = () => {
                       value={listItem}
                       placeholder={`List item ${itemIndex + 1}`}
                       onChange={(e) =>
-                        handleListChange(index, e.target.value, itemIndex)
+                        handleListChange(index, itemIndex, e.target.value)
                       }
                       className="border rounded-xl p-2 w-full"
                     />
                     <button
                       onClick={() => removeListItem(index, itemIndex)}
-                      className="bg-red-600 hover:bg-red-700 text-white rounded-md px-3 py-1"
+                      className="bg-red-600 text-white rounded-md px-3 py-1"
                     >
                       Remove
                     </button>
                   </div>
                 ))}
-
-                <div className="flex items-center justify-between">
-                  <button
-                    onClick={() => addListItem(index)}
-                    className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2"
-                  >
-                    Add List Item
-                  </button>
-                  <button
-                    onClick={() => removeContent(index)}
-                    className="bg-red-600 hover:bg-red-700 text-white rounded-xl px-4 py-2"
-                  >
-                    Remove
-                  </button>
-                </div>
+                <button
+                  onClick={() => addListItem(index)}
+                  className="bg-blue-600 text-white rounded-full px-4 py-2"
+                >
+                  Add List Item
+                </button>
               </div>
             )}
 
-            {item.type === "image" && (
-              <div className="flex flex-col">
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) =>
-                    handleFileChange(index, e.target.files?.[0] || null)
-                  }
-                  className="border rounded-xl p-2 w-full"
-                />
-                {item.value && (
-                  <Image
-                    src={item.value as string}
-                    width={200}
-                    height={100}
-                    alt="Preview"
-                    className="w-fit h-fit rounded-md mt-3"
-                  />
-                )}
-              </div>
-            )}
-            {item.type === "video" && (
-              <div className="flex flex-col">
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) =>
-                    handleFileChange(index, e.target.files?.[0] || null)
-                  }
-                  className="border rounded-xl p-2 w-full"
-                />
-                {item.value && (
-                  <Image
-                    src={item.value as string}
-                    width={200}
-                    height={100}
-                    alt="Preview"
-                    className="w-fit h-fit rounded-md mt-3"
-                  />
-                )}
-              </div>
-            )}
-            {item.type !== "list" && (
-              <button
-                onClick={() => removeContent(index)}
-                className="bg-red-600 hover:bg-red-700 rounded-xl mx-1 h-fit w-fit my-auto text-white p-4"
-              >
-                <PiTrash />
-              </button>
-            )}
+            <button
+              onClick={() => removeContent(index)}
+              className="bg-red-600 text-white rounded-md px-4 py-2 self-end"
+            >
+              <PiTrash />
+            </button>
           </div>
         ))}
       </div>
 
-      <div className="mb-4 flex flex-wrap gap-2">
-        <button
-          onClick={() => addContent("text")}
-          className="bg-transparent border rounded-full hover:bg-blue-500 text-gray-600 hover:text-white px-4 py-2"
-        >
-          Add Text
-        </button>
-        <button
-          onClick={() => addContent("header")}
-          className="bg-transparent border rounded-full hover:bg-blue-500 text-gray-600 hover:text-white px-4 py-2"
-        >
-          Add Header
-        </button>
-        <button
-          onClick={() => addContent("subheader")}
-          className="bg-transparent border rounded-full hover:bg-blue-500 text-gray-600 hover:text-white px-4 py-2"
-        >
-          Add SubHeader
-        </button>
-        <button
-          onClick={() => addContent("image")}
-          className="bg-transparent border rounded-full hover:bg-blue-500 text-gray-600 hover:text-white px-4 py-2"
-        >
-          Add Image
-        </button>
-        <button
-          onClick={() => addContent("video")}
-          className="bg-transparent border rounded-full hover:bg-blue-500 text-gray-600 hover:text-white px-4 py-2"
-        >
-          Add Video
-        </button>
-        <button
-          onClick={() => addContent("media-note")}
-          className="bg-transparent border rounded-full hover:bg-blue-500 text-gray-600 hover:text-white px-4 py-2"
-        >
-          Add Media Note
-        </button>
-        <button
-          onClick={() => addContent("youtube")}
-          className="bg-transparent border rounded-full hover:bg-blue-500 text-gray-600 hover:text-white px-4 py-2"
-        >
-          Add YouTube Link
-        </button>
-        <button
-          onClick={() => addContent("link")}
-          className="bg-transparent border rounded-full hover:bg-blue-500 text-gray-600 hover:text-white px-4 py-2"
-        >
-          Add URL Link
-        </button>
-        <button
-          onClick={() => addContent("list")}
-          className="bg-transparent border rounded-full hover:bg-blue-500 text-gray-600 hover:text-white px-4 py-2"
-        >
-          Add List
-        </button>
+      <div className="flex flex-wrap gap-2 mb-4">
+        {["text", "header", "subheader", "image", "banner", "list", "media-note"].map(
+          (type) => (
+            <button
+              key={type}
+              onClick={() => addContent(type as Content["type"])}
+              className="bg-gray-200 hover:bg-gray-300 text-gray-600 rounded-full px-4 py-2"
+            >
+              Add {type.charAt(0).toUpperCase() + type.slice(1)}
+            </button>
+          )
+        )}
       </div>
 
       <button
         onClick={submitBlog}
-        className="mt-4 bg-blue-600 rounded-full text-white px-4 py-3 font-semibold"
+        className="bg-blue-600 text-white rounded-full px-4 py-3 font-semibold"
       >
         Submit Blog
       </button>

@@ -34,7 +34,8 @@ const BlogDetail: React.FC = () => {
             }
             return (
               typeof item.value === "string" &&
-              !item.value.startsWith("blob:") // Exclude blobs
+              !item.value.startsWith("blob:") && // Exclude blobs
+              !item.value.includes("/uploads/banner/") // Exclude files from upload/banner
             );
           });
 
