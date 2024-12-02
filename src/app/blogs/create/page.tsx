@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { PiTrash } from "react-icons/pi";
-import { fetchWithAuth } from "../../utils/fetchWithAuth"; // Sesuaikan path sesuai struktur project
+// import { fetchWithAuth } from "../../utils/fetchWithAuth"; // Sesuaikan path sesuai struktur project
 
 interface Content {
   type: "text" | "image" | "video" | "youtube" | "link" | "header" | "subheader" | "list" | "media-note" | "file" | "banner";
@@ -103,16 +103,15 @@ const CreateBlog: React.FC = () => {
 
     content.forEach((item, index) => {
       if (item.file) {
-        formData.append(`file_${index}`, item.file);
+        const key = item.type === "banner" ? "file_banner" : `file_${index}`;
+        formData.append(key, item.file);
+      } else {
+        formData.append(`content_${index}`, JSON.stringify(item));
       }
-      formData.append(
-        `content_${index}`,
-        JSON.stringify({ type: item.type, value: item.value })
-      );
     });
 
     try {
-      const response = await fetchWithAuth("/api/blogs", {
+      const response = await fetch("/api/blogs", {
         method: "POST",
         body: formData,
       });
@@ -122,20 +121,16 @@ const CreateBlog: React.FC = () => {
         setTitle("");
         setContent([]);
       } else {
-        const error = await response.json();
-        console.error("Error:", error);
         alert("Failed to create blog.");
       }
     } catch (error) {
-      console.error("Error submitting blog:", error);
+      console.error(error);
       alert("An error occurred.");
     }
   };
 
+  if (!isClient) return null;
 
-  if (!isClient) {
-    return null; // Ensure SSR mismatch is avoided
-  }
 
   return (
     <div className="p-6 max-w-5xl mx-auto h-full">
