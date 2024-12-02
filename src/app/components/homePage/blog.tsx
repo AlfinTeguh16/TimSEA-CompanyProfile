@@ -87,14 +87,14 @@ const BlogCard: React.FC = () => {
 
             return (
               <Link href={`/blogs/${blog._id}`} key={blog._id}>
-                <div className="rounded-3xl bg-white h-[500px] w-full overflow-hidden shadow-lg transition-transform ease-out duration-300 hover:scale-105 hover:shadow-2xl">
+                <div className="rounded-[35px] bg-white h-[600px] w-full overflow-hidden shadow-lg transition-transform ease-out duration-300 hover:scale-105 hover:shadow-2xl">
                   {image ? (
                     <Image
                       src={image}
                       alt={title}
                       width={400}
                       height={200}
-                      className="w-full h-80 object-cover rounded-t-3xl"
+                      className="w-full h-[400px] object-cover rounded-t-3xl"
                     />
                   ) : (
                     <div className="w-full h-80 bg-gray-200 flex items-center justify-center">
