@@ -35,7 +35,7 @@ const CompanyPartner: React.FC = () => {
             alt={`Logo ${index}`}
             width={160}
             height={20}
-            className="flex justify-between px-5 py-2 mx-2 md:px-10 md:py-5 md:mx-4 "
+            className="flex justify-between px-10 py-5 mx-4"
           />
         ))}
       </Marquee>
@@ -55,7 +55,7 @@ const CompanyPartner: React.FC = () => {
             alt={`Logo ${index}`}
             width={160}
             height={20}
-            className="flex justify-between px-5 py-2 mx-2 md:px-10 md:py-5 md:mx-4"
+            className="flex justify-between px-10 py-5 mx-4"
           />
         ))}
       </Marquee>
