@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -52,6 +54,8 @@ body {
     background-position: 100% 50% ;
   }
 
+}
+
 .bg-blog{
   background-image: url('/images/ARTICLE-4.png');
   
@@ -59,4 +63,8 @@ body {
   background-size: 100%;
 }
 
+.bg-partner{
+  background-image: url('/images/bg-dot-pattrent.png');
+  background-size: 100%;
 }
+

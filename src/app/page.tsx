@@ -5,6 +5,7 @@ import Services from './components/homePage/services';
 import WhyUs from './components/homePage/whyUs';
 import Contact from './components/homePage/contact';
 import BlogCard from './components/homePage/blog';
+import CompanyPartner from './components/homePage/companyPartner';
 
 
 export default function Home() {
@@ -27,6 +28,12 @@ export default function Home() {
       <section id="blogCard" className='bg-blog py-5 md:py-16 mt-10'>
           <BlogCard/>
       </section>
+    </div>
+
+    <div className='bg-text-color-navy my-20'>
+        <section className='w-full bg-partner py-3'>
+          <CompanyPartner/>
+        </section>
     </div>
 
     <section id="contact">

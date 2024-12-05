@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'custom-radial': 'radial-gradient(ellipse at center, rgba(32, 38, 51,1) -240%, rgba(32, 38, 51,0) 80%)',
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
