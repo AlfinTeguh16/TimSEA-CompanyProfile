@@ -16,7 +16,7 @@ const logos = [
 const CompanyPartner: React.FC = () => {
   return (
     <>
-    <div className="w-full flex justify-center md:-mb-14">
+    <div className="w-full flex justify-center ">
       <h1 className="px-4 md:px-20 xl:px-20 font-bold text-white text-3xl xl:text-5xl mt-7 mb-4">
         TimSEA Partners
       </h1>
@@ -33,9 +33,9 @@ const CompanyPartner: React.FC = () => {
             key={index}
             src={logo}
             alt={`Logo ${index}`}
-            width={200}
+            width={160}
             height={20}
-            className="flex justify-between px-5 py-2 mx-2 md:p-10 md:mx-4 "
+            className="flex justify-between px-5 py-2 mx-2 md:px-10 md:py-5 md:mx-4 "
           />
         ))}
       </Marquee>
@@ -53,9 +53,9 @@ const CompanyPartner: React.FC = () => {
             key={index}
             src={logo}
             alt={`Logo ${index}`}
-            width={200}
+            width={160}
             height={20}
-            className="flex justify-between px-5 py-2 mx-2 md:p-10 md:mx-4"
+            className="flex justify-between px-5 py-2 mx-2 md:px-10 md:py-5 md:mx-4"
           />
         ))}
       </Marquee>

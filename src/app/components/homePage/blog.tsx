@@ -153,7 +153,7 @@ const BlogCard: React.FC = () => {
                       </div>
                     )}
                     <div className="px-4 py-4">
-                      <h2 className="text-lg md:text-2xl font-bold text-gray-800">{title}</h2>
+                      <h2 className="text-lg md:text-xl font-bold text-gray-800">{title}</h2>
                     </div>
                   </div>
                 </Link>
