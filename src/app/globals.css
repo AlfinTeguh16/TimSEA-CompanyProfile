@@ -50,10 +50,9 @@ body {
   .responsive-container {
     background-image: url('/images/seaMap.png');
     background-repeat: no-repeat;
-    background-size:  57vw; 
-    background-position: 100% 50% ;
+    background-size:  55vw; 
+    background-position: 100% 64% ;
   }
-
 }
 
 .bg-blog{
