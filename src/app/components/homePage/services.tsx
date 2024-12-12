@@ -5,7 +5,7 @@ import { PiUsersFourBold, PiUserSoundBold, PiUserCircleGearBold } from "react-ic
 interface ServiceCardProps {
     icon: React.ElementType;
     title: string;
-    subtitle: string;
+    subtitle: React.ReactNode;
     description: React.ReactNode;
 }
 
@@ -42,8 +42,9 @@ const Services: React.FC = () => {
                     <ServiceCard 
                         icon={PiUsersFourBold} 
                         title="Super Team" 
-                        subtitle="Set up your team in Southeast Asia.
-                        From recruitment to management, we establish essential teams for seamless operations:" 
+                        subtitle={
+                            <>Set up your team in Southeast Asia. <br />From recruitment to management, we establish essential teams for seamless operations:</>
+                        }
                         description={
                             <>
                                 We offer comprehensive support to ensure you have the right team in place for a successful venture into the Southeast Asian market. From recruitment to management, we take care of the essential teams needed for seamless operations, including:
@@ -61,7 +62,9 @@ const Services: React.FC = () => {
                     <ServiceCard 
                         icon={PiUserCircleGearBold} 
                         title="All-in-One Package" 
-                        subtitle="Team setup + PR activities = Success in SEA. We handle your expansion from start to finish:" 
+                        subtitle={
+                            <>Team setup + PR activities = Success in SEA. <br />We handle your expansion from start to finish:</>
+                        } 
                         description={
                             <>
                                 <span className="flex flex-col">
