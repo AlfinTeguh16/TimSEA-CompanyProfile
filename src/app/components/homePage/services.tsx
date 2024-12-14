@@ -15,10 +15,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon: Icon, title, subtitle, 
             <div className="p-4 h-full bg-gradient-to-l to-cerulean-500 from-blue-ribbon-500 transition-all ease-out duration-500 rounded-lg hover:z-20 hover:scale-105 hover:shadow-xl">
                 <div>
                     <span className="flex flex-row pl-5 align-middle">
-                        <Icon className="text-white text-xl md:text-4xl mr-2" />
-                        <p className="text-white font-bold text-base md:text-2xl xl:text-3xl">{title}</p>
+                        <Icon className="text-white text-2xl md:text-4xl mr-2" />
+                        <p className="text-white font-bold text-xl md:text-2xl xl:text-3xl">{title}</p>
                     </span>
-                    <p className="text-white font-semibold text-base md:text-xl px-5 py-1">{subtitle}</p>
+                    <p className="text-white leading-tight font-semibold text-base md:text-xl px-5 py-1 mb-2">{subtitle}</p>
                     <p className="text-white text-xs md:text-sm xl:text-md text-justify px-5">{description}</p>
                 </div>
             </div>
@@ -32,14 +32,7 @@ const Services: React.FC = () => {
             <div>
                 <h1 className="px-4 md:px-20 xl:px-20 font-bold text-text-color-navy text-3xl xl:text-5xl my-10">What We Do</h1>
                 <section className="px-4 md:px-20 xl:px-20 h-full flex flex-col md:gap-x-8">
-                    <ServiceCard 
-                        icon={PiUserSoundBold} 
-                        title="Public Relations in SEA" 
-                        subtitle="Connecting your company with the best influencers and media" 
-                        description="We specialize in delivering press releases for your company or product, ensuring maximum exposure through top-tier media across Southeast Asia. In addition, we focus on identifying the perfect influencers who align with your brand’s values and goals. Our team works closely with them to manage and execute campaigns, ensuring impactful and strategically-driven collaborations that elevate your brand’s presence in the region." 
-                        
-                    />
-                    <ServiceCard 
+                <ServiceCard 
                         icon={PiUsersFourBold} 
                         title="Super Team" 
                         subtitle={
@@ -60,6 +53,14 @@ const Services: React.FC = () => {
                         }
                     />
                     <ServiceCard 
+                        icon={PiUserSoundBold} 
+                        title="Public Relations in SEA" 
+                        subtitle="Connecting your company with the best influencers and media" 
+                        description="We specialize in delivering press releases for your company or product, ensuring maximum exposure through top-tier media across Southeast Asia. In addition, we focus on identifying the perfect influencers who align with your brand’s values and goals. Our team works closely with them to manage and execute campaigns, ensuring impactful and strategically-driven collaborations that elevate your brand’s presence in the region." 
+                        
+                    />
+                    
+                    <ServiceCard 
                         icon={PiUserCircleGearBold} 
                         title="All-in-One Package" 
                         subtitle={
@@ -68,7 +69,7 @@ const Services: React.FC = () => {
                         description={
                             <>
                                 <span className="flex flex-col">
-                                    <span>• Team setup & management</span>
+                                    <span>• Team and management setup</span>
                                     <span>• Market research & strategy</span>
                                     <span>• Social media & community engagement</span>
                                     <span>• Media & influencer partnerships</span>
